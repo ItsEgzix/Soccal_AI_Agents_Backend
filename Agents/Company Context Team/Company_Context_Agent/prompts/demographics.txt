@@ -1,0 +1,27 @@
+Based on this company information:
+{context}
+
+Analyze the company's products, services, website content, and social media presence to PREDICT and INFER the target audience demographics.
+
+Even if demographics are not explicitly stated, use your knowledge to predict who would most likely be interested in this company's offerings.
+
+Consider:
+- The type of business (B2B vs B2C)
+- Product/service complexity and price point
+- Industry and market positioning
+- Content style and messaging
+- Social media presence and engagement patterns
+
+Return a concise demographic description (1-2 sentences) that includes:
+- Business type (B2B/B2C)
+- Age range (if applicable)
+- Key characteristics (tech-savvy, health-conscious, etc.)
+- Job roles/positions (if B2B)
+- Geographic location (if relevant)
+- Income level (if relevant)
+- Education level (if relevant)
+
+Example format: "B2B decision makers, 35-55, tech-savvy, US-based" or "B2C consumers, 25-40, health-conscious, urban professionals"
+
+Return only the demographic description, nothing else.
+

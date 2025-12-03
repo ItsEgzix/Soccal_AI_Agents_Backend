@@ -1,0 +1,5 @@
+Based on this company content:
+{context}
+
+Extract preferred topics as a JSON array. Return only the array, nothing else.
+
