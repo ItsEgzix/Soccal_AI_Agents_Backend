@@ -1,0 +1,7 @@
+Analyze the writing style of these Instagram captions:
+
+{captions}
+
+What are the style characteristics? (e.g., "Use active voice, avoid jargon", "Short sentences, conversational", etc.)
+Return only the style guide, nothing else.
+

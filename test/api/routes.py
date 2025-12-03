@@ -45,9 +45,3 @@ async def test_agent_compare(request: CompareRequest) -> Dict[str, Any]:
         error_detail = f"Error comparing agents: {str(e)}\n{traceback.format_exc()}"
         raise HTTPException(status_code=500, detail=error_detail)
 
-
-@router.get("/health")
-async def health() -> Dict[str, str]:
-    """Health check endpoint."""
-    return {"status": "ok"}
-

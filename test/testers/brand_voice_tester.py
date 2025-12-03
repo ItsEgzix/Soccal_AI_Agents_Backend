@@ -39,7 +39,7 @@ class BrandVoiceTester(BaseAgentTester):
             
             if instagram_account and not instagram_captions:
                 print(f"[BrandVoiceTester] Scraping Instagram account: {instagram_account}")
-                instagram_captions = self.scraper_service.scrape_instagram(
+                instagram_captions = self.scraper_service.scrape_instagram_captions(
                     instagram_account,
                     limit=5
                 )
@@ -54,14 +54,14 @@ class BrandVoiceTester(BaseAgentTester):
             
             try:
                 # 3. Import and run agent
-                agents_path = PathManager.get_agents_dir()
-                PathManager.add_to_sys_path(agents_path)
+                agents_root = PathManager.get_project_root() / "Agents"
+                PathManager.add_to_sys_path(agents_root)
                 
-                from Brand_Voice_Agent.agent import BrandVoiceAgent
+                from teams.company_context.agents.brand_voice.agent import BrandVoiceAgent
                 
                 print(f"[BrandVoiceTester] Starting agent execution with {len(instagram_captions)} captions")
                 agent = BrandVoiceAgent()
-                result = agent.analyze_brand_voice(instagram_captions)
+                result = agent.execute(captions=instagram_captions)  # Use execute() method from BaseAgent
                 print(f"[BrandVoiceTester] Agent execution completed successfully")
                 
                 execution_time = time.time() - start_time

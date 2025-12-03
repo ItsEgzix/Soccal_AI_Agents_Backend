@@ -33,9 +33,9 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# Include test API routes (for agent testing) from test/test_api.py
+# Include test API routes (for agent testing) from test/api/routes.py
 try:
-    from test.test_api import router as test_router
+    from test.api.routes import router as test_router
 
     app.include_router(test_router)
 except Exception as e:
@@ -46,15 +46,11 @@ except Exception as e:
 # Lazy import function to avoid circular import issues
 def get_process_company_context():
     """Lazy import of process_company_context to avoid circular imports."""
-    agents_path = os.path.join(os.path.dirname(__file__), 'Agents', 'Company Context Team')
+    agents_path = os.path.join(os.path.dirname(__file__), 'Agents')
     sys.path.insert(0, agents_path)
     
-    import importlib.util
-    company_context_main_path = os.path.join(agents_path, "main.py")
-    spec = importlib.util.spec_from_file_location("company_context_main", company_context_main_path)
-    company_context_main = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(company_context_main)
-    return company_context_main.process_company_context
+    from teams.company_context.main import process_company_context
+    return process_company_context
 
 # Configure CORS
 app.add_middleware(
@@ -129,15 +125,10 @@ async def websocket_company_context(websocket: WebSocket):
             return
         
         # Import orchestrator
-        agents_path = os.path.join(os.path.dirname(__file__), 'Agents', 'Company Context Team')
+        agents_path = os.path.join(os.path.dirname(__file__), 'Agents')
         sys.path.insert(0, agents_path)
         
-        import importlib.util
-        orchestrator_path = os.path.join(agents_path, 'orchestrator _Agent', 'orchestrator.py')
-        spec = importlib.util.spec_from_file_location("orchestrator", orchestrator_path)
-        orchestrator_module = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(orchestrator_module)
-        OrchestratorAgent = orchestrator_module.OrchestratorAgent
+        from teams.company_context.orchestrator import OrchestratorAgent
         
         # Create orchestrator with log callback (use sync method for queue-based)
         orchestrator = OrchestratorAgent()

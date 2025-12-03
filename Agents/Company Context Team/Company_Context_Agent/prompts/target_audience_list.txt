@@ -1,5 +1,0 @@
-Based on this company information:
-{context}
-
-Extract {field} as a list. Return only a JSON array, nothing else.
-

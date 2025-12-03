@@ -47,14 +47,14 @@ class CompanyContextTester(BaseAgentTester):
             
             try:
                 # 3. Import and run agent
-                agents_path = PathManager.get_agents_dir()
-                PathManager.add_to_sys_path(agents_path)
+                agents_root = PathManager.get_project_root() / "Agents"
+                PathManager.add_to_sys_path(agents_root)
                 
-                from Company_Context_Agent.agent import CompanyContextAgent
+                from teams.company_context.agents.company_context.agent import CompanyContextAgent
                 
                 print(f"[CompanyContextTester] Starting agent execution with company_id: {company_id}")
                 agent = CompanyContextAgent(company_id=company_id)
-                result = agent.extract_company_profile()
+                result = agent.execute()  # Use execute() method from BaseAgent
                 print(f"[CompanyContextTester] Agent execution completed successfully")
                 
                 execution_time = time.time() - start_time

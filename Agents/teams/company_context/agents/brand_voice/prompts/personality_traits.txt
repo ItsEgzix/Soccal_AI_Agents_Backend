@@ -1,0 +1,6 @@
+Based on these Instagram captions, what are the brand's personality traits?
+
+{captions}
+
+Return only a JSON array of personality traits (e.g., ["innovative", "trustworthy", "customer-focused"]), nothing else.
+

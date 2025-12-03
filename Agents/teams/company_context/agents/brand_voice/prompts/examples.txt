@@ -1,0 +1,6 @@
+From these Instagram captions, select 2-3 representative example sentences that best show the brand voice:
+
+{captions}
+
+Return only a JSON array of example sentences, nothing else.
+

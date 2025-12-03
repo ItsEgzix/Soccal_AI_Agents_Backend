@@ -118,25 +118,19 @@ class ScraperService:
         
         return company_id
     
-    def scrape_instagram(self, instagram_account: str, limit: int = 5) -> list:
+    def scrape_instagram_captions(self, instagram_account: str, limit: int = 5) -> list:
         """
-        Scrape Instagram posts for an account.
+        Scrape Instagram captions for an account.
         
         Args:
             instagram_account: Instagram username (without @)
             limit: Maximum number of posts to scrape
             
         Returns:
-            List of Instagram captions
+            List of Instagram captions (strings)
         """
         scraper = self.get_instagram_scraper()
-        posts = scraper.scrape_posts(instagram_account, limit=limit)
-        
-        # Extract captions from posts
-        captions = []
-        for post in posts:
-            if post.get('caption'):
-                captions.append(post['caption'])
-        
+        # scrape_posts returns a list of captions directly
+        captions = scraper.scrape_posts(instagram_account, limit=limit)
         return captions
 

@@ -1,0 +1,7 @@
+Analyze the tone of these Instagram captions:
+
+{captions}
+
+What is the overall tone? (e.g., professional, casual, friendly, authoritative, playful, etc.)
+Return only the tone description, nothing else.
+

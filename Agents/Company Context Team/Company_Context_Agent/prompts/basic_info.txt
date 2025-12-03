@@ -1,5 +1,0 @@
-Based on this company information:
-{context}
-
-Extract the {field} for this company. Return only the {field}, nothing else.
-
